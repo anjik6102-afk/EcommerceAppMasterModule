@@ -1,4 +1,5 @@
 using ECommerceApp.Data;
+using ECommerceApp.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceApp
@@ -25,6 +26,9 @@ namespace ECommerceApp
             // Configure EF Core with SQL Server
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("EFCoreDBConnection")));
+
+            // Registering the CustomerService
+            builder.Services.AddScoped<CustomerService>();
 
             var app = builder.Build();
 
